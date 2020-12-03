@@ -1,6 +1,18 @@
 class EventsController < ApplicationController
     before_action :set_event, only: [:show, :edit, :destroy]
 
+    def comedy
+        @events = Event.comedy
+    end
+
+    def sports
+        @events = Event.sports
+    end
+
+    def concert
+        @events = Event.concert
+    end
+
     def index
         @events = Event.all
     end
