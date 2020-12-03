@@ -1,6 +1,8 @@
 class ArenasController < ApplicationController
+    before_action: [:show, :edit, :destroy]
 
     def index
+        @arenas = Arena.all
     end
 
     def show
@@ -22,6 +24,10 @@ class ArenasController < ApplicationController
     end
 
     private
+
+    def set_arena
+        @arena = Arena.find(params[:id])
+    end
 
     def arena_params
         params.require(:arenas).permit(:name, :city, :state, :capacity)
