@@ -23,11 +23,15 @@ ActiveRecord::Schema.define(version: 2020_12_02_195112) do
 
   create_table "events", force: :cascade do |t|
     t.string "performer"
-    t.string "type"
-    t.float "price"
+    t.string "event_type"
+    t.integer "price"
     t.datetime "time"
+    t.integer "arena_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["arena_id"], name: "index_events_on_arena_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -59,4 +63,6 @@ ActiveRecord::Schema.define(version: 2020_12_02_195112) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "arenas"
+  add_foreign_key "events", "users"
 end
