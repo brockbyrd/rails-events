@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    before_action: [:show, :edit, :destroy]
+    before_action :set_event, only: [:show, :edit, :destroy]
 
     def index
         @events = Event.all
@@ -9,9 +9,17 @@ class EventsController < ApplicationController
     end
 
     def new
+
     end
 
     def create
+        @event = Event.create(event_params)
+
+        if @event.save?
+            redirect_to @event
+        else
+            redirect_to new_event_path
+        end
     end
 
     def edit
@@ -31,6 +39,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-        params.require(:events).permit(:performer, :type, :price, :time)
+        params.require(:events).permit(:performer, :event_type, :price, :time, :arena_id, :user_id)
     end
 end
