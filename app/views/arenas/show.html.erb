@@ -1,0 +1,6 @@
+<h1><%= @arena.name %></h1>
+<% @arena.events.each do |event| %>
+    <%= event.performer %>
+    <%= event.event_type %>
+
+<% end %>
