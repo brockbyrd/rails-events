@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
+    before_action: [:show, :edit, :destroy]
 
     def index
+        @events = Event.all
     end
 
     def show
@@ -19,9 +21,14 @@ class EventsController < ApplicationController
     end
 
     def destroy
+        
     end
 
     private
+
+    def set_event
+        @event = Event.find(params[:id])
+    end
 
     def event_params
         params.require(:events).permit(:performer, :type, :price, :time)
