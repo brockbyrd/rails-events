@@ -26,7 +26,8 @@ class EventsController < ApplicationController
     end
 
     def create
-        @event = current_user.events.build(event_params)
+        binding.pry
+        @event = current_user.events.create(event_params)
 
         if @event.valid?
             @event.save
