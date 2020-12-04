@@ -1,0 +1,4 @@
+<% @events.each do |event| %>
+    <h2><%= link_to event.performer, event_path(event) %></h2>
+    <h2><%= event.time.to_formatted_s(:long_ordinal) %></h2><br>
+<% end %>

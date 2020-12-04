@@ -13,6 +13,14 @@ class EventsController < ApplicationController
         @events = Event.concert
     end
 
+    def festival
+        @events = Event.festival
+    end
+
+    def fundraiser
+        @events = Event.fundraiser
+    end
+
     def index
         @events = Event.all
     end
