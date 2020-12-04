@@ -40,10 +40,16 @@ class EventsController < ApplicationController
     end
 
     def update
+        if @event.update(event_params)
+            redirect_to @event
+        else
+            render :edit
+        end
     end
 
     def destroy
-        
+        Event.find(params[:id]).destroy
+        redirect_to arenas_path
     end
 
     private
