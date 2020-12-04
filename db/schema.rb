@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_195112) do
+ActiveRecord::Schema.define(version: 2020_12_04_165719) do
 
   create_table "arenas", force: :cascade do |t|
     t.string "name"
@@ -23,14 +23,15 @@ ActiveRecord::Schema.define(version: 2020_12_02_195112) do
 
   create_table "events", force: :cascade do |t|
     t.string "performer"
-    t.string "event_type"
     t.integer "price"
     t.datetime "time"
     t.integer "arena_id"
     t.integer "user_id"
+    t.integer "type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["arena_id"], name: "index_events_on_arena_id"
+    t.index ["type_id"], name: "index_events_on_type_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -41,6 +42,12 @@ ActiveRecord::Schema.define(version: 2020_12_02_195112) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,5 +71,6 @@ ActiveRecord::Schema.define(version: 2020_12_02_195112) do
   end
 
   add_foreign_key "events", "arenas"
+  add_foreign_key "events", "types"
   add_foreign_key "events", "users"
 end

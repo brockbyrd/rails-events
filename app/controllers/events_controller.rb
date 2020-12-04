@@ -21,13 +21,15 @@ class EventsController < ApplicationController
     end
 
     def new
-
+        @event = Event.new(arena_id: params[:arena_id])
     end
 
     def create
-        @event = Event.create(event_params)
+        @event = Event.new(event_params)
+        @event.user_id = current_user.id
 
-        if @event.save?
+        if @event.valid?
+            @event.save
             redirect_to @event
         else
             redirect_to new_event_path
@@ -51,6 +53,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-        params.require(:events).permit(:performer, :event_type, :price, :time, :arena_id, :user_id)
+        params.require(:event).permit(:performer, :price, :time, :arena_id, :user_id, :type_id, type_attributes: [:name])
     end
 end

@@ -1,0 +1,33 @@
+<%= form_with(model: event, local: true) do |f| %>
+<div class="container">
+    <div class="form-group">
+      <%= f.label :performer %>
+      <%= f.text_field :performer, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :event_type %>
+      <%= f.collection_select(:type_id, Type.all, :id, :name, { :prompt=>"Select Event type" }, { class: "form-control" }) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :price %>
+      <%= f.number_field :price, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :time %>
+      <%= f.time_select :time, class: "form-control" %>
+    </div>
+
+      <% if event.arena_id.nil? %> 
+        <div class="form-group mt-1">
+          <%= f.label :arena %> <br />
+          <%= f.collection_select(:arena_id, Arena.all, :id, :name, { :prompt=>"Select an Arena" }, { :class => "form-control" }) %>
+        <% else %>
+          <%= f.hidden_field :arena_id %>
+        </div>
+      <% end %>
+
+    <div class="actions">
+      <%= f.submit "Save Event", class: "btn btn lg  btn-success" %>
+    </div>
+  </div>
+<% end %>
