@@ -1,0 +1,4 @@
+<% @events.each do |event| %>
+    <%= event.performer %>
+    <%= event.time.to_formatted_s(:long_ordinal) %>
+<% end %>
