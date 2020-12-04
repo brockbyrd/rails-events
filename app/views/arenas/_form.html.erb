@@ -1,0 +1,24 @@
+<%= form_with(model: arena, local: true) do |f| %>
+<div class="container">
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :state %>
+      <%= f.text_field :state, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :capacity %>
+      <%= f.select(:capacity, Arena.capacities.keys, {}, { class: "form-control" }) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Save Arena", class: "btn btn lg  btn-success" %>
+    </div>
+  </div>
+<% end %>

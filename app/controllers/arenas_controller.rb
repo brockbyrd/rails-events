@@ -14,7 +14,6 @@ class ArenasController < ApplicationController
 
     def create
         @arena = Arena.create(arena_params)
-        @arena.user_id = current_user.id
 
         if @arena.valid?
             @arena.save
@@ -47,6 +46,6 @@ class ArenasController < ApplicationController
     end
 
     def arena_params
-        params.require(:arenas).permit(:name, :city, :state, :capacity)
+        params.require(:arena).permit(:name, :city, :state, :capacity, event_ids: [])
     end
 end
