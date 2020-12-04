@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
+
     def home
-        if current_user
-            @user = current_user
-        else
-            redirect_to new_user_session_path, notice: 'You are not logged in'
+        if user_signed_in? 
+          redirect_to arenas_path
         end
-    end
+      end
+  
 end
