@@ -24,7 +24,22 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
          <%= link_to 'Arenas', arenas_path, class:"nav-link" %>
-      </li>         
+      </li> 
+      <li class="nav-item">
+        <%= link_to 'Sports', '/events/sports', class:"nav-link" %>
+      </li>        
+      <li class="nav-item">
+        <%= link_to 'Concerts', '/events/concerts', class:"nav-link" %>
+      </li>  
+      <li class="nav-item">
+        <%= link_to 'Comedy', '/events/comedy', class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Festival', '/events/festival', class:"nav-link" %>
+      </li>  
+      <li class="nav-item">
+        <%= link_to 'Fundraiser', '/events/fundraiser', class:"nav-link" %>
+      </li>  
       <% if user_signed_in? %>
       <li class="nav-item">
         <%= link_to "Log Out", destroy_user_session_path,  method: :delete, class: "nav-link" %>
@@ -44,6 +59,5 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-
   </body>
 </html>

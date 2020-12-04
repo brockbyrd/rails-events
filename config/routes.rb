@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/events/comedy', to: 'events#comedy'
   get '/events/sports', to: 'events#sports'
   get '/events/concert', to: 'events#concert'
+  get '/events/festival', to: 'events#festival'
+  get '/events/fundraiser', to: 'events#fundraiser'
   
   resources :arenas do
     resources :events, only: [:index, :show, :new, :edit]
