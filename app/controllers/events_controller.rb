@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    before_action :set_event, only: [:show, :edit, :destroy]
+    before_action :set_event, only: [:edit, :update, :destroy]
 
     def comedy
         @events = Event.comedy
@@ -18,6 +18,7 @@ class EventsController < ApplicationController
     end
 
     def show
+        @event = Event.find(params[:id])
     end
 
     def new
@@ -25,8 +26,7 @@ class EventsController < ApplicationController
     end
 
     def create
-        @event = Event.new(event_params)
-        @event.user_id = current_user.id
+        @event = current_user.events.build(event_params)
 
         if @event.valid?
             @event.save
@@ -55,7 +55,11 @@ class EventsController < ApplicationController
     private
 
     def set_event
-        @event = Event.find(params[:id])
+        @event = current_user.events.find_by(id: params[:id])
+        if !@event
+            flash[:error] = "You are not authorized to do that!"
+            redirect_to arenas_path
+        end
     end
 
     def event_params

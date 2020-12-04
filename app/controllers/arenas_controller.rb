@@ -1,5 +1,5 @@
 class ArenasController < ApplicationController
-    before_action :set_arena, only: [:show, :edit, :update]
+    before_action :set_arena, only: [:show]
 
     def index
         @arenas = Arena.all
@@ -21,22 +21,6 @@ class ArenasController < ApplicationController
         else
             redirect_to new_arena_path
         end
-    end
-
-    def edit
-    end
-
-    def update
-        if @arena.update(arena_params)
-            redirect_to @arena
-        else
-            render :edit
-        end
-    end
-
-    def destroy
-        Arena.find(params[:id]).destroy
-        redirect_to arenas_path
     end
 
     private
