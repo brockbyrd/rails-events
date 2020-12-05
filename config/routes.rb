@@ -27,5 +27,5 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'users#show'
 
-  # get ':not_found' => redirect('/'), :constraints => { :not_found => /.*/ }
+  get ':not_found' => redirect('/'), :constraints => { :not_found => /.*/ }
 end

@@ -1,2 +1,12 @@
-    $<%= @event.price %>.00
-    <%= @event.time.to_formatted_s(:long_ordinal) %>
+    <h2>Performance by: <%= @event.performer %></h2><br>
+
+    <h3>Price: $<%= @event.price %>.00</h3><br>
+    
+    <h3>Date and Time: <%= @event.time.to_formatted_s(:long_ordinal) %></h3><br>
+
+    <% if current_user.id == @event.user_id %>
+        <%= link_to "Edit Event", edit_event_path(@event) %>
+        <%= link_to 'Delete Event', event_path(@event), :method => 'destroy' %>
+    <% end %>
+
+    <%= link_to 'All Arenas', arenas_path %>
