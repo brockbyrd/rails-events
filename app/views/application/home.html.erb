@@ -1,2 +1,5 @@
-<h1>HELLO HOW ARE YOU</h1>
- <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+<h1>WELCOME TO THE EVENT LISTER</h1>
+<h3>This application lists arenas and events happening at the named arenas!</h3>
+<% if !user_signed_in? %>
+    <h3><%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %> to see the arenas and events!</h3>
+<% end %>

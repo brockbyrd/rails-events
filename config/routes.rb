@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   get '/events/fundraiser', to: 'events#fundraiser'
   
   resources :arenas do
-    resources :events, only: [:index, :show, :new, :edit]
+    resources :events
   end
+
   resources :events
+
 
   devise_scope :user do
     get '/users/sign_in', to: 'devise/sessions#new'
@@ -24,4 +26,6 @@ Rails.application.routes.draw do
   end
 
   get '/users/:id', to: 'users#show'
+
+  # get ':not_found' => redirect('/'), :constraints => { :not_found => /.*/ }
 end

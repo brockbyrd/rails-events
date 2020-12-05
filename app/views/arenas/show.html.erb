@@ -1,6 +1,6 @@
 <h1><%= @arena.name %></h1>
 <% @arena.events.each do |event| %>
-    <%= link_to event.performer, arena_event_path(event) %>
+    <h3><%= link_to event.performer, arena_event_path(event) %></h3><br>
 <% end %>
 
 <%= link_to "New Event", new_arena_event_path(@arena) %>
