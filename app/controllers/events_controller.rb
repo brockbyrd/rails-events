@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
     before_action :set_event, only: [:edit, :update, :destroy]
+    before_action :authenticate_user!
 
     def comedy
         @events = Event.comedy
@@ -56,8 +57,8 @@ class EventsController < ApplicationController
     end
 
     def destroy
-        Event.find(params[:id]).destroy
-        redirect_to arenas_path
+        @event = Event.find(params[:id])
+        redirect_to arena_event_path
     end
 
     private

@@ -1,5 +1,6 @@
 class ArenasController < ApplicationController
     before_action :set_arena, only: [:show]
+    before_action :authenticate_user!
 
     def index
         @arenas = Arena.all
