@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :events
 
 
+
   devise_scope :user do
     get '/users/sign_in', to: 'devise/sessions#new'
     post '/users/sign_in', to: 'devise/sessions#create'

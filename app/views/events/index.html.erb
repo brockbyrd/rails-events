@@ -1,0 +1,4 @@
+
+<% @events.each do |event| %>
+    <%= link_to event.performer, event_path(event) %>
+<% end %>
