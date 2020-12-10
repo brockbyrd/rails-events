@@ -1,5 +1,13 @@
 <%= @user.username %>
 
+<h1>Your Events</h1>
+
 <% @user.events.each do |event| %>
     <li><%= link_to event.performer, event_path(event) %></li>
+<% end %>
+
+<h1>Your Arenas</h1>
+
+<% @user.arenas.each do |arena| %>
+    <li><%= link_to arena.name, arena_path(arena) %>, <%= arena.city %>, <%= arena.state %></li> 
 <% end %>

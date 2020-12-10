@@ -4,3 +4,8 @@
 
 <%= link_to "All Events", arena_events_path(@arena) %>
 <%= link_to "New Event", new_arena_event_path(@arena) %>
+
+<h3>These users have been to this arena!</h3>
+<% @arena.users.each.uniq do |user| %>
+    <li><%= user.username %></li>
+<% end %>

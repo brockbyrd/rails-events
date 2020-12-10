@@ -33,6 +33,7 @@ Event.create(performer: "Louisville Basketball", price: "15", time: DateTime.new
 Event.create(performer: "Clippers and Lakers", price: "30", time: DateTime.new(2020,12,25,7), arena_id: "8", user_id: "3", type_id: "3")
 Event.create(performer: "Future", price: "60", time: DateTime.new(2021,4,19,9), arena_id: "9", user_id: "4", type_id: "2")
 Event.create(performer: "New York Jets", price: "15", time: DateTime.new(2020,12,6,12), arena_id: "10", user_id: "5", type_id: "3")
+Event.create(performer: "Queen", price: '20', time: DateTime.new(2021,11,3,4), arena_id: "1", user_id: "1", type_id: "2")
 
 
 Type.create(name: "Comedy")
