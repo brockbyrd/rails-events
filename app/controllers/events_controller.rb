@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
     before_action :set_event, only: [:edit, :update, :destroy]
-    before_action :authenticate_user!
 
     def comedy
         @events = Event.comedy
@@ -23,7 +22,11 @@ class EventsController < ApplicationController
     end
 
     def index
-        @events = Event.all
+        if params[:arena_id]
+            @events = Arena.find(params[:arena_id]).events
+          else
+            @events = Event.all
+          end
     end
 
     def show
@@ -57,7 +60,8 @@ class EventsController < ApplicationController
     end
 
     def destroy
-        @event = Event.find(params[:id]).destroy
+        @event.destroy
+        flash[:success] = "Event Deleted"
         redirect_to arenas_path
     end
 
